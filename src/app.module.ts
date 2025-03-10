@@ -7,6 +7,7 @@ import { PrismaService } from './prisma/prisma.service';
 import { TasksModule } from './tasks/tasks.module';
 import { JwtModule } from '@nestjs/jwt';
 import { UsersModule } from './users/users.module';
+import { PrismaModule } from './prisma/prisma.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { UsersModule } from './users/users.module';
       signOptions: { expiresIn: '1h' },
     }),
     UsersModule,
+    PrismaModule,
   ],
   controllers: [AppController],
   providers: [AppService, PrismaService],
