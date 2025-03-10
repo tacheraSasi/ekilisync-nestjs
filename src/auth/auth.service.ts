@@ -28,7 +28,10 @@ export class AuthService {
       });
 
       console.log(user);
-      return { success: true, token: this.jwtService.sign({ userId: user.id }) };
+      return {
+        success: true,
+        token: this.jwtService.sign({ userId: user.id }),
+      };
     } catch (error) {
       console.error('Error in signUp:', error);
       return { success: false, message: 'Internal server error' };
@@ -50,7 +53,10 @@ export class AuthService {
         return { success: false, message: 'Invalid email or password' };
       }
 
-      return { success: true, token: this.jwtService.sign({ userId: user.id }) };
+      return {
+        success: true,
+        token: this.jwtService.sign({ userId: user.id }),
+      };
     } catch (error) {
       console.error('Error in signIn:', error);
       return { success: false, message: 'Internal server error' };
