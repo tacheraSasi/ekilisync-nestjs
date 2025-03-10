@@ -31,7 +31,16 @@ export class AuthService {
     return { token: this.jwtService.sign({ userId: user.id }) };
   }
 
-  async signIn() {
-    console.log('Sign in');
+  async signIn(email: string, password: string) {
+    const user = await this.prisma.user.findUnique({
+      where: { email: email },
+    });
+    if (!user) {
+      throw new Error('Invalid email or password');
+    }
+    if (user.password !== hashPassword(password)) {
+      throw new Error('Invalid email or password');
+    }
+    return { token: this.jwtService.sign({ userId: user.id }) };
   }
 }
