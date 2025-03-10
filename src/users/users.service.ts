@@ -6,7 +6,7 @@ import { PrismaService } from 'src/prisma/prisma.service';
 export class UsersService {
   constructor(private prisma: PrismaService) {}
 
-  // Creating a new user 
+  // Creating a new user
   async createUser(email: string, password: string, name: string) {
     const hashedPassword = await bcrypt.hash(password, 10);
     return this.prisma.user.create({
