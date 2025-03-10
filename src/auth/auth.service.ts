@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import { hashPassword } from 'src/lib/utils';
+import { comparePassword, hashPassword } from 'src/lib/utils';
 import { PrismaService } from 'src/prisma/prisma.service';
 
 @Injectable()
@@ -36,10 +36,12 @@ export class AuthService {
       where: { email: email },
     });
     if (!user) {
-      throw new Error('Invalid email or password');
+      throw new Error('User not found');
     }
-    if (user.password !== hashPassword(password)) {
-      throw new Error('Invalid email or password');
+    if (comparePassword(password, user.password)) {
+      console.log(user.password);
+      console.log(hashPassword(password));
+      throw new Error('Failed to autheniticate: Invalid email or password');
     }
     return { token: this.jwtService.sign({ userId: user.id }) };
   }
