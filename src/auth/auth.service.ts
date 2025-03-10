@@ -13,36 +13,47 @@ export class AuthService {
   }
 
   async signUp(email: string, password: string, name: string) {
-    const existingUser = await this.prisma.user.findUnique({
-      where: { email: email },
-    });
-    if (existingUser) {
-      throw new Error('User already exists');
+    try {
+      const existingUser = await this.prisma.user.findUnique({
+        where: { email },
+      });
+
+      if (existingUser) {
+        return { success: false, message: 'User already exists' };
+      }
+
+      const hashedPassword = hashPassword(password);
+      const user = await this.prisma.user.create({
+        data: { email, password: hashedPassword, name },
+      });
+
+      console.log(user);
+      return { success: true, token: this.jwtService.sign({ userId: user.id }) };
+    } catch (error) {
+      console.error('Error in signUp:', error);
+      return { success: false, message: 'Internal server error' };
     }
-    const hashedPassword = hashPassword(password);
-    const user = await this.prisma.user.create({
-      data: {
-        email,
-        password: hashedPassword,
-        name,
-      },
-    });
-    console.log(user);
-    return { token: this.jwtService.sign({ userId: user.id }) };
   }
 
   async signIn(email: string, password: string) {
-    const user = await this.prisma.user.findUnique({
-      where: { email: email },
-    });
-    if (!user) {
-      throw new Error('User not found');
+    try {
+      const user = await this.prisma.user.findUnique({
+        where: { email },
+      });
+
+      if (!user) {
+        return { success: false, message: 'Invalid email or password' };
+      }
+
+      const isPasswordValid = await comparePassword(password, user.password);
+      if (!isPasswordValid) {
+        return { success: false, message: 'Invalid email or password' };
+      }
+
+      return { success: true, token: this.jwtService.sign({ userId: user.id }) };
+    } catch (error) {
+      console.error('Error in signIn:', error);
+      return { success: false, message: 'Internal server error' };
     }
-    if (comparePassword(password, user.password)) {
-      console.log(user.password);
-      console.log(hashPassword(password));
-      throw new Error('Failed to autheniticate: Invalid email or password');
-    }
-    return { token: this.jwtService.sign({ userId: user.id }) };
   }
 }
