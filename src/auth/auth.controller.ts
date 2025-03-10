@@ -7,11 +7,19 @@ export class AuthController {
 
   @Post('signup')
   signup(@Body() body: { email: string; password: string; name: string }) {
-    return this.authService.signUp(body.email, body.password, body.name);
+    try {
+      return this.authService.signUp(body.email, body.password, body.name);
+    } catch (error) {
+      return { error: true, message: `Something went wrong ${error}` };
+    }
   }
 
   @Post('login')
   login(@Body() body: { email: string; password: string }) {
-    return this.authService.signIn(body.email, body.password);
+    try {
+      return this.authService.signIn(body.email, body.password);
+    } catch (error) {
+      return { error: true, message: `Something went wrong ${error}` };
+    }
   }
 }
