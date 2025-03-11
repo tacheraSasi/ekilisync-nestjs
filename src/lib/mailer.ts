@@ -7,7 +7,12 @@ export class Mailer extends EkiliRelay {
     super(process.env.RELAY_API_KEY);
   }
 
-  async sendEmail(to: string, subject: string, message: string): Promise<any> {
-    return this.sendEmail(to, subject, message);
+  async sendEmail(
+    to: string,
+    subject: string,
+    message: string,
+    from: string = 'From EkiliSync <support@ekilie.com>',
+  ): Promise<any> {
+    return this.sendEmail(to, subject, message, from);
   }
 }
