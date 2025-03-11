@@ -16,7 +16,7 @@ import { PrismaModule } from './prisma/prisma.module';
     TasksModule,
     JwtModule.register({
       secret: process.env.JWT_SECRET,
-      signOptions: { expiresIn: '1h' },
+      signOptions: { expiresIn: '2h' },
     }),
     UsersModule,
     PrismaModule,
