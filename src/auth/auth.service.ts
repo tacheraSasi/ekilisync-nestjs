@@ -32,7 +32,9 @@ export class AuthService {
       await Mailer.sendEmail(
         email,
         'Welcome to EkiliSync',
-        'Thank you for signing up with EkiliSync!',
+        `Thank you for signing up with EkiliSync! 
+        Explore the wonders of ekiliSync and let us know if you have any questions.
+        `,
       );
       return {
         success: true,
