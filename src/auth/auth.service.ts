@@ -61,16 +61,13 @@ export class AuthService {
 
       const isPasswordValid = await comparePassword(password, user.password);
       if (!isPasswordValid) {
-        return {
-          success: false,
-          message: 'Invalid email or password',
-          user: user,
-        };
+        return { success: false, message: 'Invalid email or password' };
       }
 
       return {
         success: true,
         token: this.jwtService.sign({ userId: user.id }),
+        user: user,
       };
     } catch (error) {
       console.error('Error in signIn:', error);
