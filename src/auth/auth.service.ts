@@ -31,7 +31,7 @@ export class AuthService {
       console.log(user);
       await Mailer.sendEmail(
         email,
-        'Welcome to EkiliSync',
+        `Welcome to EkiliSync ${name}!`,
         `Thank you for signing up with EkiliSync! 
         Explore the wonders of ekiliSync and let us know if you have any questions.
         `,
