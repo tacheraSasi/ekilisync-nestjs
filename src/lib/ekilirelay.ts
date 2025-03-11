@@ -29,6 +29,7 @@ export class EkiliRelay {
           headers: { 'Content-Type': 'application/json' },
         }),
       );
+      console.log(response);
       return response.data;
     } catch (error) {
       return { error: error.message };

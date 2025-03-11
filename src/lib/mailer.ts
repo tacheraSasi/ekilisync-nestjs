@@ -7,7 +7,7 @@ export class Mailer extends EkiliRelay {
     super(httpService, process.env.RELAY_API_KEY);
   }
 
-  static async sendEmail(
+  async sendEmail(
     to: string,
     subject: string,
     message: string,
@@ -19,12 +19,6 @@ export class Mailer extends EkiliRelay {
       message,
       companyName: 'EkiliSync',
     });
-    return super.prototype.sendEmail.call(
-      this,
-      to,
-      subject,
-      messageTemplate,
-      from,
-    );
+    return super.sendEmail.call(this, to, subject, messageTemplate, from);
   }
 }

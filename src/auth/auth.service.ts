@@ -1,3 +1,4 @@
+import { HttpService } from '@nestjs/axios';
 import { Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { Mailer } from 'src/lib/mailer';
@@ -9,6 +10,7 @@ export class AuthService {
   constructor(
     private prisma: PrismaService,
     private jwtService: JwtService,
+    private httpService: HttpService,
   ) {
     console.log('AuthService instantiated');
   }
@@ -29,7 +31,8 @@ export class AuthService {
       });
 
       console.log(user);
-      await Mailer.sendEmail(
+      const mailer = new Mailer(this.httpService);
+      await mailer.sendEmail(
         email,
         `Welcome to EkiliSync ${name}!`,
         `Thank you for signing up with EkiliSync! 
