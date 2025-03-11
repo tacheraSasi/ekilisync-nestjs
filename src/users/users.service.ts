@@ -15,6 +15,11 @@ export class UsersService {
     });
   }
 
+  //get all users
+  getUsers() {
+    return this.prisma.user.findMany();
+  }
+
   async getUserById(userId: string) {
     const user = await this.prisma.user.findUnique({
       where: { id: userId },
