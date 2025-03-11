@@ -19,6 +19,12 @@ export class Mailer extends EkiliRelay {
       message,
       companyName: 'EkiliSync',
     });
-    return this.sendEmail(to, subject, messageTemplate, from);
+    return super.prototype.sendEmail.call(
+      this,
+      to,
+      subject,
+      messageTemplate,
+      from,
+    );
   }
 }

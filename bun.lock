@@ -13,7 +13,6 @@
         "@nestjs/platform-express": "^10.0.0",
         "@prisma/client": "^6.4.1",
         "bcryptjs": "^3.0.2",
-        "ekilirelay": "^1.0.4",
         "passport": "^0.7.0",
         "passport-jwt": "^4.0.1",
         "prisma": "^6.4.1",
@@ -623,8 +622,6 @@
     "ee-first": ["ee-first@1.1.1", "", {}, "sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow=="],
 
     "ejs": ["ejs@3.1.10", "", { "dependencies": { "jake": "^10.8.5" }, "bin": { "ejs": "bin/cli.js" } }, "sha512-UeJmFfOrAQS8OJWPZ4qtgHyWExa088/MtK5UEyoJGFH67cDEXkZSviOiKRCZ4Xij0zxI3JECgYs3oKx+AizQBA=="],
-
-    "ekilirelay": ["ekilirelay@1.0.4", "", {}, "sha512-Dq58yYRd3Uj/yG0dYaBqgGi+0d30Ar1stLkjYwKWEjz/griGTA6t25JA0yZaPMmWlIbVEBfvryGCpBOTSULe/w=="],
 
     "electron-to-chromium": ["electron-to-chromium@1.5.113", "", {}, "sha512-wjT2O4hX+wdWPJ76gWSkMhcHAV2PTMX+QetUCPYEdCIe+cxmgzzSSiGRCKW8nuh4mwKZlpv0xvoW7OF2X+wmHg=="],
 
