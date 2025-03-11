@@ -8,6 +8,7 @@ import { TasksModule } from './tasks/tasks.module';
 import { JwtModule } from '@nestjs/jwt';
 import { UsersModule } from './users/users.module';
 import { PrismaModule } from './prisma/prisma.module';
+import { SendEmailModule } from './send-email/send-email.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { PrismaModule } from './prisma/prisma.module';
     }),
     UsersModule,
     PrismaModule,
+    SendEmailModule,
   ],
   controllers: [AppController],
   providers: [AppService, PrismaService],
