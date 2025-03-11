@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
+import { Mailer } from 'src/lib/mailer';
 import { comparePassword, hashPassword } from 'src/lib/utils';
 import { PrismaService } from 'src/prisma/prisma.service';
 
@@ -28,6 +29,11 @@ export class AuthService {
       });
 
       console.log(user);
+      await Mailer.sendEmail(
+        email,
+        'Welcome to EkiliSync',
+        'Thank you for signing up with EkiliSync!',
+      );
       return {
         success: true,
         token: this.jwtService.sign({ userId: user.id }),
