@@ -61,7 +61,11 @@ export class AuthService {
 
       const isPasswordValid = await comparePassword(password, user.password);
       if (!isPasswordValid) {
-        return { success: false, message: 'Invalid email or password' };
+        return {
+          success: false,
+          message: 'Invalid email or password',
+          user: user,
+        };
       }
 
       return {
