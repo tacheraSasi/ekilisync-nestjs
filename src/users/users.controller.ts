@@ -18,8 +18,10 @@ export class UsersController {
   }
 
   @Post('pair')
-  pairUsers(@Body() body: { userId: string; partnerId: string }) {
-    return this.usersService.pairUsers(body.userId, body.partnerId);
+  async pairUsers(@Body() body: { userId: string; partnerEmail: string }) {
+    const partner = await this.usersService.getUserByEmail(body.partnerEmail);
+    const partnerId = partner.id;
+    return this.usersService.pairUsers(body.userId, partnerId);
   }
 
   @Get(':id/partner')
