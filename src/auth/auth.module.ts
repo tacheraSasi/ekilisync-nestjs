@@ -5,11 +5,13 @@ import { JwtModule } from '@nestjs/jwt';
 import { AuthController } from './auth.controller';
 import { AuthGuard } from './auth.guard';
 import { UsersModule } from 'src/users/users.module';
+import { HttpModule } from '@nestjs/axios';
 
 @Module({
   imports: [
     PrismaModule,
     forwardRef(() => UsersModule),
+    HttpModule,
     JwtModule.register({
       secret: process.env.JWT_SECRET,
       signOptions: { expiresIn: '20h' },
