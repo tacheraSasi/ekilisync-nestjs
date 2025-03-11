@@ -15,6 +15,7 @@ export class TasksController {
     return this.tasksService.markCompleted(taskId);
   }
 
+  // @UseGuards(AuthGuard)
   @Get(':userId')
   getTasks(@Param('userId') userId: string) {
     return this.tasksService.getTasks(userId);
