@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: ekilisync-api
+    env: node
+    buildCommand: npm install && npm run build
+    startCommand: node dist/main.js
+    envVars:
+      - key: PORT
+        value: 3000
+      - key: DATABASE_URL
+        fromDatabase:
+          name: ekilisync-db
+          property: connectionString
+      - key: JWT_SECRET
+        sync: false
+      - key: RELAY_API_KEY
+        sync: false

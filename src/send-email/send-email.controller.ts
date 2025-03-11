@@ -1,4 +1,12 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { SendEmailService } from './send-email.service';
 import { CreateSendEmailDto } from './dto/create-send-email.dto';
 import { UpdateSendEmailDto } from './dto/update-send-email.dto';
@@ -23,7 +31,10 @@ export class SendEmailController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateSendEmailDto: UpdateSendEmailDto) {
+  update(
+    @Param('id') id: string,
+    @Body() updateSendEmailDto: UpdateSendEmailDto,
+  ) {
     return this.sendEmailService.update(+id, updateSendEmailDto);
   }
 
