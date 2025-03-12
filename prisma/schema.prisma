@@ -12,7 +12,7 @@ model User {
   email      String  @unique
   password   String
   name       String
-  partnerId  String? @unique 
+  partnerId  String? @unique
   partner    User?   @relation("Couple", fields: [partnerId], references: [id])
   pairedWith User[]  @relation("Couple")
 
@@ -22,7 +22,8 @@ model User {
 }
 
 model Task {
-  id          String   @id @default(cuid())
+  // id          String   @id @default(cuid())
+  id          Int      @id @default(autoincrement())
   title       String
   description String?
   completed   Boolean  @default(false)
@@ -30,4 +31,3 @@ model Task {
   owner       User     @relation(fields: [ownerId], references: [id])
   createdAt   DateTime @default(now())
 }
-
