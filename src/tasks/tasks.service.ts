@@ -40,4 +40,10 @@ export class TasksService {
       orderBy: { createdAt: 'desc' },
     });
   }
+
+  async deleteTask(taskId: string) {
+    return this.prisma.task.delete({
+      where: { id: Number(taskId) },
+    });
+  }
 }
