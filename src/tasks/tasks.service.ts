@@ -18,7 +18,7 @@ export class TasksService {
     ownerId?: string;
   }) {
     return this.prisma.task.update({
-      where: { id: data.id },
+      where: { id: Number(data.id) },
       data: {
         title: data.title,
         description: data.description,
@@ -29,7 +29,7 @@ export class TasksService {
 
   async markCompleted(taskId: string) {
     return this.prisma.task.update({
-      where: { id: taskId },
+      where: { id: Number(taskId) },
       data: { completed: true },
     });
   }
