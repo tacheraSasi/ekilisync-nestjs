@@ -17,7 +17,7 @@ import { SendEmailModule } from './send-email/send-email.module';
     TasksModule,
     JwtModule.register({
       secret: process.env.JWT_SECRET,
-      signOptions: { expiresIn: '2h' },
+      signOptions: { expiresIn: '20h' },
     }),
     UsersModule,
     PrismaModule,
