@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
 
 @Injectable()
@@ -17,21 +17,29 @@ export class TasksService {
     description?: string;
     ownerId?: string;
   }) {
-    return this.prisma.task.update({
-      where: { id: Number(data.id) },
-      data: {
-        title: data.title,
-        description: data.description,
-        ownerId: data.ownerId,
-      },
-    });
+    try {
+      return await this.prisma.task.update({
+        where: { id: Number(data.id) },
+        data: {
+          title: data.title,
+          description: data.description,
+          ownerId: data.ownerId,
+        },
+      });
+    } catch {
+      throw new NotFoundException('Task not found.');
+    }
   }
 
   async markCompleted(taskId: string) {
-    return this.prisma.task.update({
-      where: { id: Number(taskId) },
-      data: { completed: true },
-    });
+    try {
+      return await this.prisma.task.update({
+        where: { id: Number(taskId) },
+        data: { completed: true },
+      });
+    } catch {
+      throw new NotFoundException('Task not found.');
+    }
   }
 
   async getTasks(userId: string) {
@@ -41,9 +49,43 @@ export class TasksService {
     });
   }
 
+  async getTaskById(taskId: string) {
+    try {
+      return await this.prisma.task.findUnique({
+        where: { id: Number(taskId) },
+      });
+    } catch {
+      throw new NotFoundException('Task not found.');
+    }
+  }
+
   async deleteTask(taskId: string) {
-    return this.prisma.task.delete({
-      where: { id: Number(taskId) },
+    try {
+      return await this.prisma.task.delete({
+        where: { id: Number(taskId) },
+      });
+    } catch {
+      throw new NotFoundException('Task not found.');
+    }
+  }
+
+  async getCompletedTasks(userId: string) {
+    return this.prisma.task.findMany({
+      where: { ownerId: userId, completed: true },
+      orderBy: { createdAt: 'desc' },
+    });
+  }
+
+  async getIncompleteTasks(userId: string) {
+    return this.prisma.task.findMany({
+      where: { ownerId: userId, completed: false },
+      orderBy: { createdAt: 'desc' },
+    });
+  }
+
+  async countTasks(userId: string) {
+    return this.prisma.task.count({
+      where: { ownerId: userId },
     });
   }
 }
