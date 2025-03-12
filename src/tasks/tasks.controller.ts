@@ -1,7 +1,17 @@
-import { Controller, Post, Patch, Get, Body, Param } from '@nestjs/common';
+import {
+  Controller,
+  Post,
+  Patch,
+  Get,
+  Body,
+  Param,
+  UseGuards,
+} from '@nestjs/common';
 import { TasksService } from './tasks.service';
+import { AuthGuard } from 'src/auth/auth.guard';
 
 @Controller('tasks')
+@UseGuards(AuthGuard)
 export class TasksController {
   constructor(private readonly tasksService: TasksService) {}
 
@@ -17,13 +27,12 @@ export class TasksController {
 
   @Patch(':id')
   update(
-    @Body() body: { title: string; ownerId: string },
+    @Body() body: { title: string; description?: string; ownerId?: string },
     @Param('id') taskId: string,
   ) {
-    
+    return this.tasksService.updateTask({ id: taskId, ...body });
   }
 
-  // @UseGuards(AuthGuard)
   @Get(':userId')
   getTasks(@Param('userId') userId: string) {
     return this.tasksService.getTasks(userId);
