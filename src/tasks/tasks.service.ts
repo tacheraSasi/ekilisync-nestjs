@@ -11,6 +11,22 @@ export class TasksService {
     });
   }
 
+  async updateTask(data: {
+    id: string;
+    title: string;
+    description?: string;
+    ownerId?: string;
+  }) {
+    return this.prisma.task.update({
+      where: { id: data.id },
+      data: {
+        title: data.title,
+        description: data.description,
+        ownerId: data.ownerId,
+      },
+    });
+  }
+
   async markCompleted(taskId: string) {
     return this.prisma.task.update({
       where: { id: taskId },

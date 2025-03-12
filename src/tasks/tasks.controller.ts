@@ -15,6 +15,14 @@ export class TasksController {
     return this.tasksService.markCompleted(taskId);
   }
 
+  @Patch(':id')
+  update(
+    @Body() body: { title: string; ownerId: string },
+    @Param('id') taskId: string,
+  ) {
+    
+  }
+
   // @UseGuards(AuthGuard)
   @Get(':userId')
   getTasks(@Param('userId') userId: string) {
