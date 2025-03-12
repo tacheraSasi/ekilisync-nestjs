@@ -27,7 +27,7 @@ export const homeHtml = `
       Our backend API is designed to handle all your needs with speed and ease. Here’s how to get started:
     </p>
     <pre class="bg-neutral-800 p-4 rounded-lg text-green-400 text-lg">
-      <code>GET /api/v1/users</code> - Fetches a list of users
+      <code>GET /users</code> - Fetches a list of users
     </pre>
     <p class="text-lg text-neutral-300 mt-4">
       Use the above endpoint to retrieve user information. For a list of all available endpoints, refer to the section below.
@@ -39,102 +39,102 @@ export const homeHtml = `
     <div class="space-y-6">
       <!-- Endpoint 1 -->
       <div class="bg-neutral-700 p-6 rounded-lg">
-        <h3 class="text-xl font-semibold">GET /api/v1/users</h3>
+        <h3 class="text-xl font-semibold">GET /users</h3>
         <p class="text-neutral-300">Fetches a list of users. Returns an array of user objects.</p>
       </div>
       <!-- Endpoint 2 -->
       <div class="bg-neutral-700 p-6 rounded-lg">
-        <h3 class="text-xl font-semibold">POST /api/v1/users</h3>
+        <h3 class="text-xl font-semibold">POST /users</h3>
         <p class="text-neutral-300">Creates a new user. Requires a JSON body with user data.</p>
       </div>
       <!-- Endpoint 3 -->
       <div class="bg-neutral-700 p-6 rounded-lg">
-        <h3 class="text-xl font-semibold">PUT /api/v1/users/:id</h3>
+        <h3 class="text-xl font-semibold">PUT /users/:id</h3>
         <p class="text-neutral-300">Updates an existing user by ID. Requires a JSON body with updated data.</p>
       </div>
       <!-- Endpoint 4 -->
       <div class="bg-neutral-700 p-6 rounded-lg">
-        <h3 class="text-xl font-semibold">DELETE /api/v1/users/:id</h3>
+        <h3 class="text-xl font-semibold">DELETE /users/:id</h3>
         <p class="text-neutral-300">Deletes a user by ID.</p>
       </div>
       <!-- Endpoint 5 -->
       <div class="bg-neutral-700 p-6 rounded-lg">
-        <h3 class="text-xl font-semibold">POST /api/v1/users/pair</h3>
+        <h3 class="text-xl font-semibold">POST /users/pair</h3>
         <p class="text-neutral-300">Pairs two users together. Requires a JSON body with user IDs.</p>
       </div>
       <!-- Endpoint 6 -->
       <div class="bg-neutral-700 p-6 rounded-lg">
-        <h3 class="text-xl font-semibold">GET /api/v1/users/:id/partner</h3>
+        <h3 class="text-xl font-semibold">GET /users/:id/partner</h3>
         <p class="text-neutral-300">Fetches the partner of a user by ID.</p>
       </div>
       <!-- Endpoint 7 -->
       <div class="bg-neutral-700 p-6 rounded-lg">
-        <h3 class="text-xl font-semibold">POST /api/v1/tasks</h3>
+        <h3 class="text-xl font-semibold">POST /tasks</h3>
         <p class="text-neutral-300">Creates a new task. Requires a JSON body with task data.</p>
       </div>
       <!-- Endpoint 8 -->
       <div class="bg-neutral-700 p-6 rounded-lg">
-        <h3 class="text-xl font-semibold">PATCH /api/v1/tasks/:id/complete</h3>
+        <h3 class="text-xl font-semibold">PATCH /tasks/:id/complete</h3>
         <p class="text-neutral-300">Marks a task as complete by task ID.</p>
       </div>
       <!-- Endpoint 9 -->
       <div class="bg-neutral-700 p-6 rounded-lg">
-        <h3 class="text-xl font-semibold">PATCH /api/v1/tasks/:id</h3>
+        <h3 class="text-xl font-semibold">PATCH /tasks/:id</h3>
         <p class="text-neutral-300">Updates a task by ID. Requires a JSON body with updated task data.</p>
       </div>
       <!-- Endpoint 10 -->
       <div class="bg-neutral-700 p-6 rounded-lg">
-        <h3 class="text-xl font-semibold">GET /api/v1/tasks/:userId</h3>
+        <h3 class="text-xl font-semibold">GET /tasks/:userId</h3>
         <p class="text-neutral-300">Fetches all tasks for a user by their ID.</p>
       </div>
       <!-- Endpoint 11 -->
       <div class="bg-neutral-700 p-6 rounded-lg">
-        <h3 class="text-xl font-semibold">GET /api/v1/tasks/:userId/completed</h3>
+        <h3 class="text-xl font-semibold">GET /tasks/:userId/completed</h3>
         <p class="text-neutral-300">Fetches completed tasks for a user by their ID.</p>
       </div>
       <!-- Endpoint 12 -->
       <div class="bg-neutral-700 p-6 rounded-lg">
-        <h3 class="text-xl font-semibold">GET /api/v1/tasks/:userId/incomplete</h3>
+        <h3 class="text-xl font-semibold">GET /tasks/:userId/incomplete</h3>
         <p class="text-neutral-300">Fetches incomplete tasks for a user by their ID.</p>
       </div>
       <!-- Endpoint 13 -->
       <div class="bg-neutral-700 p-6 rounded-lg">
-        <h3 class="text-xl font-semibold">GET /api/v1/tasks/:userId/count</h3>
+        <h3 class="text-xl font-semibold">GET /tasks/:userId/count</h3>
         <p class="text-neutral-300">Fetches the task count for a user by their ID.</p>
       </div>
       <!-- Endpoint 14 -->
       <div class="bg-neutral-700 p-6 rounded-lg">
-        <h3 class="text-xl font-semibold">GET /api/v1/tasks/:taskId</h3>
+        <h3 class="text-xl font-semibold">GET /tasks/:taskId</h3>
         <p class="text-neutral-300">Fetches a task by its ID.</p>
       </div>
       <!-- Endpoint 15 -->
       <div class="bg-neutral-700 p-6 rounded-lg">
-        <h3 class="text-xl font-semibold">DELETE /api/v1/tasks/:id</h3>
+        <h3 class="text-xl font-semibold">DELETE /tasks/:id</h3>
         <p class="text-neutral-300">Deletes a task by ID.</p>
       </div>
       <!-- Endpoint 16 -->
       <div class="bg-neutral-700 p-6 rounded-lg">
-        <h3 class="text-xl font-semibold">POST /api/v1/send-email</h3>
+        <h3 class="text-xl font-semibold">POST /send-email</h3>
         <p class="text-neutral-300">Sends an email. Requires a JSON body with email data.</p>
       </div>
       <!-- Endpoint 17 -->
       <div class="bg-neutral-700 p-6 rounded-lg">
-        <h3 class="text-xl font-semibold">GET /api/v1/send-email</h3>
+        <h3 class="text-xl font-semibold">GET /send-email</h3>
         <p class="text-neutral-300">Fetches all sent emails.</p>
       </div>
       <!-- Endpoint 18 -->
       <div class="bg-neutral-700 p-6 rounded-lg">
-        <h3 class="text-xl font-semibold">GET /api/v1/send-email/:id</h3>
+        <h3 class="text-xl font-semibold">GET /send-email/:id</h3>
         <p class="text-neutral-300">Fetches a sent email by its ID.</p>
       </div>
       <!-- Endpoint 19 -->
       <div class="bg-neutral-700 p-6 rounded-lg">
-        <h3 class="text-xl font-semibold">PATCH /api/v1/send-email/:id</h3>
+        <h3 class="text-xl font-semibold">PATCH /send-email/:id</h3>
         <p class="text-neutral-300">Updates a sent email by its ID. Requires a JSON body with updated email data.</p>
       </div>
       <!-- Endpoint 20 -->
       <div class="bg-neutral-700 p-6 rounded-lg">
-        <h3 class="text-xl font-semibold">DELETE /api/v1/send-email/:id</h3>
+        <h3 class="text-xl font-semibold">DELETE /send-email/:id</h3>
         <p class="text-neutral-300">Deletes a sent email by its ID.</p>
       </div>
     </div>
