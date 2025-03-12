@@ -16,8 +16,14 @@ export class TasksController {
   constructor(private readonly tasksService: TasksService) {}
 
   @Post()
-  createTask(@Body() body: { title: string; ownerId: string }) {
-    return this.tasksService.createTask(body.title, body.ownerId);
+  createTask(
+    @Body() body: { title: string; description: string; ownerId: string },
+  ) {
+    return this.tasksService.createTask(
+      body.title,
+      body.description,
+      body.ownerId,
+    );
   }
 
   @Patch(':id/complete')
