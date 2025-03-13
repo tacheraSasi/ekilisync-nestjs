@@ -55,7 +55,7 @@ export class TasksController {
   
   
 
-  @Get(':userId')
+  @Get(':userId/combined')
   @HttpCode(HttpStatus.OK)
   async getCombinedTasks(@Param('userId') userId: string) {
     const tasks = await this.tasksService.getCombinedTasks(userId);
