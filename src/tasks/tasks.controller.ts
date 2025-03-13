@@ -52,8 +52,6 @@ export class TasksController {
     const tasks = await this.tasksService.getTasks(userId);
     return { message: 'Tasks retrieved successfully', tasks };
   }
-  
-  
 
   @Get(':userId/combined')
   @HttpCode(HttpStatus.OK)
