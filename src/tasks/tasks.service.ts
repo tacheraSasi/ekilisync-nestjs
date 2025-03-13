@@ -50,11 +50,22 @@ export class TasksService {
   }
 
   async getCombinedTasks(userId: string) {
-   return  this.prisma.task.findMany({
+    const userTasks = await this.prisma.task.findMany({
       where: { ownerId: userId },
       orderBy: { createdAt: 'desc' },
     });
 
+    const partnerId = await this.prisma.user.findUnique({
+      where: { id: userId },
+      select: { partnerId: true },
+    });
+
+    const partnerTasks = await this.prisma.task.findMany({
+      where: { ownerId: String(partnerId) },
+      orderBy: { createdAt: 'desc' },
+    });
+
+    return [...userTasks, ...partnerTasks];
   }
 
   async getTaskById(taskId: string) {
