@@ -55,13 +55,14 @@ export class TasksService {
       orderBy: { createdAt: 'desc' },
     });
 
-    const partnerId = await this.prisma.user.findUnique({
+    const user = await this.prisma.user.findUnique({
       where: { id: userId },
       select: { partnerId: true },
     });
+    if(!user || !user.partnerId) return userTasks;
 
     const partnerTasks = await this.prisma.task.findMany({
-      where: { ownerId: String(partnerId) },
+      where: { ownerId: user.partnerId },
       orderBy: { createdAt: 'desc' },
     });
 
