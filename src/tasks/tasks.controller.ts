@@ -52,6 +52,15 @@ export class TasksController {
     const tasks = await this.tasksService.getTasks(userId);
     return { message: 'Tasks retrieved successfully', tasks };
   }
+  
+  
+
+  @Get(':userId')
+  @HttpCode(HttpStatus.OK)
+  async getCombinedTasks(@Param('userId') userId: string) {
+    const tasks = await this.tasksService.getCombinedTasks(userId);
+    return { message: 'Combined tasks retrieved successfully', tasks };
+  }
 
   @Get(':userId/completed')
   @HttpCode(HttpStatus.OK)

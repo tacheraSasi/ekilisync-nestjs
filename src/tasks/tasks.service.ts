@@ -49,6 +49,14 @@ export class TasksService {
     });
   }
 
+  async getCombinedTasks(userId: string) {
+   return  this.prisma.task.findMany({
+      where: { ownerId: userId },
+      orderBy: { createdAt: 'desc' },
+    });
+
+  }
+
   async getTaskById(taskId: string) {
     try {
       return await this.prisma.task.findUnique({
